@@ -39,7 +39,7 @@ describe('/threads endpoint', () => {
       const responseJson = JSON.parse(response.payload);
       expect(response.statusCode).toEqual(201);
       expect(responseJson.status).toEqual('success');
-      expect(responseJson.data.addedUser).toBeDefined();
+      expect(responseJson.data.addedThread).toBeDefined();
     });
 
     it('should response 400 when request payload not contain needed property', async () => {
@@ -47,6 +47,8 @@ describe('/threads endpoint', () => {
       const requestPayload = {
         title: 'A Title',
       };
+
+      const accessToken = await ServerTestHelper.getAccessToken();
       const server = await createServer(container);
 
       // Action
@@ -54,6 +56,9 @@ describe('/threads endpoint', () => {
         method: 'POST',
         url: '/threads',
         payload: requestPayload,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       });
 
       // Assert
@@ -69,6 +74,8 @@ describe('/threads endpoint', () => {
         title: 'A Title',
         body: ['A Body'],
       };
+
+      const accessToken = await ServerTestHelper.getAccessToken();
       const server = await createServer(container);
 
       // Action
@@ -76,6 +83,9 @@ describe('/threads endpoint', () => {
         method: 'POST',
         url: '/threads',
         payload: requestPayload,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       });
 
       // Assert

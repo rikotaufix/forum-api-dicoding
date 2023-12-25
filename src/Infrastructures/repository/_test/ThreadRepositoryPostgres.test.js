@@ -33,7 +33,7 @@ describe('ThreadRepositoryPostgres', () => {
       const threadRepositoryPostgres = new ThreadRepositoryPostgres(pool, fakeIdGenerator);
 
       // Action
-      const createdThread = await threadRepositoryPostgres.createThread(createThread);
+      const createdThread = await threadRepositoryPostgres.addThread(createThread);
 
       // Assert
       const threads = await ThreadsTableTestHelper.findThreadsById(createdThread.id);
