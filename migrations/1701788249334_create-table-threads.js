@@ -29,5 +29,6 @@ exports.up = (pgm) => {
 };
 
 exports.down = (pgm) => {
+  pgm.dropConstraint('threads', 'fk_threads.owner_users.id');
   pgm.dropTable('threads');
 };
