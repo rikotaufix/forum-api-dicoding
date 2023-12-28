@@ -8,7 +8,7 @@ const CommentsTableTestHelper = {
     content = 'A Comment Test',
     owner = 'user-123',
     thread = 'thread-123',
-    is_delete = 0,
+    is_delete = false,
     date = 'A Date Test',
   }) {
     const query = {
